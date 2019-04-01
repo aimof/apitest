@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  apitest:
+    build: ../
+    depends_on:
+      - api
+  api:
+    build: ./api

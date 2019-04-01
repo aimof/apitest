@@ -1,0 +1,50 @@
+config:
+  timeout: 120
+
+testcases:
+  # test GET
+  - name: get
+    url: http://api:8080/
+    method: GET
+    retry: -1
+    want:
+      statuscode: 200
+      bodypath: ./txt/getwant.txt
+  # test 400
+  - name: get1_400
+    url: http://api:8080/api
+    method: GET
+    want:
+      statuscode: 400
+      bodypath: ./txt/empty.txt
+  # test POST
+  - name: post0
+    url: http://api:8080/api
+    method: POST
+    header:
+      - Key:Value
+    bodypath: ./txt/post0body.txt
+    want:
+      statuscode: 200
+      bodypath: ./txt/post0want.txt
+  # check request header
+  - name: post1
+    url: http://api:8080/api
+    method: POST
+    header:
+      - Key:Value
+      - Long:required
+    bodypath: ./txt/post0body.txt
+    want:
+      statuscode: 200
+      bodypath: ./txt/post1want.txt
+  # check request body
+  - name: post2
+    url: http://api:8080/api
+    method: POST
+    header:
+      - Key:Value
+    bodypath: ./txt/post2body.txt
+    want:
+      statuscode: 200
+      bodypath: txt/post2want.txt

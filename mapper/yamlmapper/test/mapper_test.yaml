@@ -1,0 +1,20 @@
+config:
+  timeout: 30
+
+testcases:
+  - name: GetSomething
+    url: "http://localhost/"
+    method: GET
+    retry: -1
+    want:
+      statuscode: 200
+      bodypath: "foo*bar"
+  - name: PostSomething
+    url: "http://localhost/api"
+    method: POST
+    header:
+      - key:value
+    bodypath: foo.txt
+    want:
+      statuscode: 200
+      bodypath: "*"
