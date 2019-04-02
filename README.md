@@ -80,17 +80,15 @@ want: "F*zz"
 Please clone the repo and run this command in repo root.
 
 ```sh
-./test.sh
+# in the repository root
+./demo.sh
 ```
 
 ## Testing
 
 ```sh
-# small test
+# in the repository root
 go test ./...
-
-# medium test
-./test.sh
 ```
 
 ## ToDo
