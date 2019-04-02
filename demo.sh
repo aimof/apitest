@@ -1,4 +1,4 @@
 #!/bin/sh
-cd ./test && \
+cd ./demo && \
 docker-compose build && \
 docker-compose run apitest

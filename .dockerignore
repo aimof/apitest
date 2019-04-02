@@ -4,3 +4,4 @@ mapper/yamlmapper/test
 test/api
 test/docker-compose.yml
 Dockerfile
+test.sh

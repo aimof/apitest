@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -15,19 +16,30 @@ func main() {
 	if len(os.Args) < 2 {
 		log.Fatalln("Not enough args")
 	}
-	inputpath := os.Args[1]
-	tasks, err := yamlmapper.NewYamlMapper().Tasks(inputpath)
+	path := os.Args[1]
+
+	tasks, err := yamlmapper.NewYamlMapper().Tasks(path)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	results, err := apitest.DoTasks(tasks, kicker.NewKicker(), make(compselector.Selector, 0))
+
+	err = do(tasks)
 	if err != nil {
 		log.Fatalln(err)
+	}
+}
+
+func do(tasks apitest.Tasks) error {
+
+	results, err := apitest.DoTasks(tasks, kicker.NewKicker(), make(compselector.Selector, 0))
+	if err != nil {
+		return err
 	}
 	for _, r := range results {
 		if !r.Match {
 			n, b := r.Got.Got()
-			log.Fatalf("%s is fail\ngot: %d %s", r.Name, n, string(b))
+			return fmt.Errorf("%s is fail\ngot: %d %s", r.Name, n, string(b))
 		}
 	}
+	return nil
 }
