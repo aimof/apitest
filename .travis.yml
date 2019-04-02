@@ -1,0 +1,17 @@
+sudo: false
+os: linux
+language: go
+env:
+  REPO_ROOT=$GOPATH/src/github.com/aimof/apitest
+  GO111MODULES=on
+branches:
+  only:
+    - master
+    - develop
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+script:
+  - cd $REPO_ROOT
+  - go test ./...

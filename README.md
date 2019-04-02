@@ -5,6 +5,8 @@
 * YAML input: Readable and Writable!
 * Automatic sequencial test.
 
+[![Build Status](https://travis-ci.org/aimof/apitest.svg?branch=master)](https://travis-ci.org/aimof/apitest)
+
 ## Install
 
 ```
