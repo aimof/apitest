@@ -5,5 +5,7 @@ services:
     build: ../
     depends_on:
       - api
+    working_dir: /go/src/github.com/aimof/apitest
+    command: "apitest ./demo/demo.yaml"
   api:
     build: ./api

@@ -37,8 +37,9 @@ func do(tasks apitest.Tasks) error {
 	}
 	for _, r := range results {
 		if !r.Match {
-			n, b := r.Got.Got()
-			return fmt.Errorf("%s is fail\ngot: %d %s", r.Name, n, string(b))
+			// Log file is not supported now.
+			log.Printf("%s : Fail\tPlaese Read Log.", r.Name)
+			return fmt.Errorf("Stopped: %s Failed", r.Name)
 		}
 	}
 	return nil

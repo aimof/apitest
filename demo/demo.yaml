@@ -3,7 +3,7 @@ config:
 
 testcases:
   # test GET
-  - name: get
+  - name: "Test case 0"
     url: http://api:8080/
     method: GET
     retry: -1
@@ -11,14 +11,14 @@ testcases:
       statuscode: 200
       bodypath: ./txt/getwant.txt
   # test 400
-  - name: get1_400
+  - name: "Test case 1"
     url: http://api:8080/api
     method: GET
     want:
       statuscode: 400
       bodypath: ./txt/empty.txt
   # test POST
-  - name: post0
+  - name: "Test case 2"
     url: http://api:8080/api
     method: POST
     header:
@@ -28,7 +28,7 @@ testcases:
       statuscode: 200
       bodypath: ./txt/post0want.txt
   # check request header
-  - name: post1
+  - name: "Test case 3"
     url: http://api:8080/api
     method: POST
     header:
@@ -39,7 +39,7 @@ testcases:
       statuscode: 200
       bodypath: ./txt/post1want.txt
   # check request body
-  - name: post2
+  - name: "Test case 4"
     url: http://api:8080/api
     method: POST
     header:
@@ -48,3 +48,13 @@ testcases:
     want:
       statuscode: 200
       bodypath: txt/post2want.txt
+  - name: "Test case 5"
+    url: http://api:8080/api
+    method: POST
+    header:
+      - Key:Value
+      - Wrong:true
+    bodypath: ./txt/post2body.txt
+    want:
+      statuscode: 200
+      bodypath: txt/empty.txt

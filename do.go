@@ -1,5 +1,7 @@
 package apitest
 
+import "log"
+
 // DoTasks to test.
 func DoTasks(tasks Tasks, kicker Kicker, selector CompSelector) ([]Result, error) {
 	results := make([]Result, 0, len(tasks))
@@ -22,6 +24,7 @@ func do(task Task, kicker Kicker, selector CompSelector) (Result, error) {
 
 	comparer := selector.Select(task.CompMode)
 	match := comparer.Compare(got, task.Want)
+	log.Printf("%s : Success\n", task.Name)
 	return Result{
 		Name:  task.Name,
 		Got:   got,
