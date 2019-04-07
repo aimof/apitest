@@ -18,6 +18,10 @@ func main() {
 			w.WriteHeader(400)
 			return
 		}
+		if r.Header.Get("Wrong") != "" {
+			w.WriteHeader(400)
+			return
+		}
 		if r.Header.Get("Long") == "required" {
 			fmt.Fprint(w, strings.Repeat("abcdefghijklmnopqrstuvwxyz\n", 30))
 			return
