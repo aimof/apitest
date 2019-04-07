@@ -11,6 +11,7 @@
 
 ```
 go get -u github.com/aimof/apitest/cmd/apitest
+go install
 ```
 
 ## YAML Format
