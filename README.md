@@ -1,4 +1,4 @@
-# apitest: Sequential blackbox automatiion testing command for RESTful APIs in containers.
+# apitest: RESTful APIs testing command. Sequencial, blackbox, automatic testing for containers and CIs
 
 * Sequential API testing command for containers and CIs.
 * Simplest, Fastest, Smallest API test tool.
