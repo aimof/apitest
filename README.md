@@ -26,7 +26,7 @@ __So I develop apitest, which is small, docker friendly and minimum.__
 ## apitest vs other API Testing tools or framework.
 
 * Testing Frameworks with GUI: apitest is a minimal simple command for CI.
-* Karate: Karate is a good tool but it run on JVM. Karate is not container friendly.
+* Karate: Karate is great tool so apitest is sub-choise when you want to do minimum test in CI.
 * Manual Testing: apitest has Repeatablity and doesn't have human errors.
 
 ## DEMO
