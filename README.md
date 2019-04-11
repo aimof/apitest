@@ -1,11 +1,9 @@
-# apitest: RESTful APIs testing command. Sequencial, blackbox, automatic testing for containers and CIs
+# apitest: RESTful APIs testing command. BDD like, blackbox, automated testing with containers or CIs
 
-* Sequential API testing command for containers and CIs.
+* API testing command for containers and CIs.
 * Simplest, Fastest, Smallest API test tool.
-* Minimum functional.
-* Support Scenario testing.
-* YAML testing manual: Readable and Writable!
-* Now you don't need manual test with Excel or Splead Sheet
+* BDD like YAML Testing format: Readable and Writable.
+* Smallest docker image (It will be about 10MB)
 
 [![Build Status](https://travis-ci.org/aimof/apitest.svg?branch=master)](https://travis-ci.org/aimof/apitest)
 
@@ -143,16 +141,12 @@ want: "F*zz"
 go test ./...
 ```
 
-## ToDo
+## PLAN
 
-* [ ] Json Response support.
-* [ ] `?` pattern match support.
-* [ ] More test cases.
-* [ ] Refactor. (especially comment)
-* [ ] Timeout.
-* [ ] Wildcard character selection.
-* [ ] Unittest repo root.
-* [ ] Log Control.
+1. Change YAML Format to BDD like Style (Destructive change): In progress
+2. Make Docker Image: Trial is done.
+3. Support Single Mock (Destructive change)
+4. Support Multiple Mock (Destructive change)
 
 ## Contribution
 
