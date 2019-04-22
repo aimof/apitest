@@ -1,5 +1,6 @@
 README.md
 cmd/apitest/test
+cmd/apitest/apitest
 mapper/yamlmapper/test
 test/api
 test/docker-compose.yml

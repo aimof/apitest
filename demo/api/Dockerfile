@@ -4,7 +4,7 @@ LABEL maintainer="aimof (aimof.aimof@gmail.com)"
 
 RUN apk update --no-cache
 
-COPY main.go /go//src/main.go
+COPY main.go /go/src/main.go
 WORKDIR /go/src
 RUN go build -o api
 

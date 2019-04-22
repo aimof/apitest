@@ -1,0 +1,30 @@
+# only support http now.
+Feature: Sample Yaml
+
+Scenarios:
+  - Scenario: simple GET
+    description: Normal
+    Given:
+      host: http://localhost:8080
+    Tests:
+      - When:
+          method: GET
+          path: /api
+        Then:
+          status: 200
+          format: "empty"
+      - When:
+          host: http://localhost:8881
+          path: "/api/users/foo"
+          method: POST
+          body: '{"Token": "Foo"}'
+        Then:
+          status: 200
+          header:
+            - key value
+            - key value
+          format: application/json
+          require:
+           - foo
+           - bar
+  

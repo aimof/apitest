@@ -1,33 +1,19 @@
 package apitest
 
-import "log"
-
-// DoTasks to test.
-func DoTasks(tasks Tasks, kicker Kicker, selector CompSelector) ([]Result, error) {
-	results := make([]Result, 0, len(tasks))
-	for _, task := range tasks {
-
-		r, err := do(task, kicker, selector)
+func Do(s Scenario, kicker Kicker, comp Comparer) (bool, error) {
+	for _, test := range s.Tests {
+		resp, err := kicker.Kick(test.When)
 		if err != nil {
-			return nil, err
+			return false, err
 		}
-		results = append(results, r)
+		match, err := comp.Match(resp, test.Then)
+		resp.Body.Close()
+		if err != nil {
+			return false, err
+		}
+		if !match {
+			return false, nil
+		}
 	}
-	return results, nil
-}
-
-func do(task Task, kicker Kicker, selector CompSelector) (Result, error) {
-	got, err := kicker.Kick(task.Request, task.Retry)
-	if err != nil {
-		return Result{}, err
-	}
-
-	comparer := selector.Select(task.CompMode)
-	match := comparer.Compare(got, task.Want)
-	log.Printf("%s : Success\n", task.Name)
-	return Result{
-		Name:  task.Name,
-		Got:   got,
-		Match: match,
-	}, nil
+	return true, nil
 }
