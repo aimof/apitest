@@ -1,17 +1,29 @@
 sudo: false
 os: linux
 language: go
+go:
+  - 1.12
+services:
+  - docker
 env:
-  REPO_ROOT=$GOPATH/src/github.com/aimof/apitest
-  GO111MODULES=on
+  GO111MODULE=on
+  DOCKER_COMPOSE_VERSION=1.24.0
+
 branches:
   only:
     - master
-    - develop
+    - BDD
 cache:
   directories:
     - $HOME/.composer/cache
 
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker pull golang:1.12.4-alpine
+
 script:
-  - cd $REPO_ROOT
   - go test ./...
+  - ./test.sh
