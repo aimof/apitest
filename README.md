@@ -74,7 +74,7 @@ please run test.sh.
 ## Install
 
 * using locally
-* using with docker
+* using in docker
 
 Requirements: Go 1.12.x
 
@@ -83,6 +83,10 @@ go get -u github.com/aimof/apitest/cmd/apitest
 # workdir: $GOPATH/src/github.com/aimof/cmd/apitest
 go install
 ```
+
+## Using in docker
+
+See dmd/apitest/README.md
 
 ## Usage
 
@@ -123,7 +127,7 @@ go test ./...
 
 ## Contribution
 
-Please feel free to make Issues or PRs but I will plan some destructive change.
+Please feel free to make Issues or PRs but I will plan some destructive changes.
 
 ## LICENSE
 
