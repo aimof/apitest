@@ -1,0 +1,33 @@
+Feature: Sample Yaml
+
+Scenarios:
+  - Scenario: Normal
+    description: Normal
+    Given:
+      host: http://server:8080
+    Tests:
+      - When:
+          method: GET
+          path: /api
+        Then:
+          status: 200
+          format: "empty"
+      - When:
+          path: "/api/users/"
+          method: POST
+          body: '{"Token": "Foo", "Name": "Foo"}'
+        Then:
+          status: 200
+          format: application/json
+          require:
+            - 'match {"name": "Foo", "Info": "#String"}'
+      - When:
+          path: /api/users/
+          method: POST
+          body: '{"Token": "Foo"}'
+        Then:
+          status: 200
+          format: application/json
+          require:
+            - 'match {"users": "#Array"}'
+  

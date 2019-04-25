@@ -1,46 +1,51 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"os"
 
 	"github.com/aimof/apitest"
-	compselector "github.com/aimof/apitest/comparer"
+	"github.com/aimof/apitest/comparer/jsoncomparer"
 	"github.com/aimof/apitest/kicker"
-
-	"github.com/aimof/apitest/mapper/yamlmapper"
+	"github.com/aimof/apitest/logger"
+	"github.com/aimof/apitest/parser/yamlparser"
 )
 
 func main() {
+	logger.LEVEL = logger.ALL
 	if len(os.Args) < 2 {
-		log.Fatalln("Not enough args")
+		logger.Fatal("Not enough args")
+		os.Exit(1)
 	}
 	path := os.Args[1]
 
-	tasks, err := yamlmapper.NewYamlMapper().Tasks(path)
+	scenarios, err := yamlparser.NewYamlParser().Parse(path)
 	if err != nil {
-		log.Fatalln(err)
+		logger.Fatal(err.Error())
+		os.Exit(1)
 	}
 
-	err = do(tasks)
+	match, err := do(scenarios)
 	if err != nil {
-		log.Fatalln(err)
+		logger.Fatal(err.Error())
+		os.Exit(1)
 	}
+	if !match {
+		logger.Error("Not match")
+		os.Exit(2)
+	}
+	os.Exit(0)
 }
 
-func do(tasks apitest.Tasks) error {
-
-	results, err := apitest.DoTasks(tasks, kicker.NewKicker(), make(compselector.Selector, 0))
-	if err != nil {
-		return err
-	}
-	for _, r := range results {
-		if !r.Match {
-			// Log file is not supported now.
-			log.Printf("%s : Fail\tPlaese Read Log.", r.Name)
-			return fmt.Errorf("Stopped: %s Failed", r.Name)
+func do(scenarios []apitest.Scenario) (bool, error) {
+	matchAll := true
+	for _, s := range scenarios {
+		match, err := apitest.Do(s, kicker.NewKicker(), jsoncomparer.NewJSONComparer())
+		if err != nil {
+			return false, err
+		}
+		if !match {
+			matchAll = false
 		}
 	}
-	return nil
+	return matchAll, nil
 }
