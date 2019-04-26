@@ -19,17 +19,21 @@ func NewYamlParser() *YamlParser {
 	return &YamlParser{Tests{}}
 }
 
-func (ym *YamlParser) Parse(path string) ([]apitest.Scenario, error) {
-	err := ym.parse(path)
+func (yp *YamlParser) Parse(path string) ([]apitest.Scenario, error) {
+	err := yp.parse(path)
 	if err != nil {
 		return nil, err
 	}
-	err = ym.afterParse(path)
+	err = yp.afterParse(path)
 	if err != nil {
 		return nil, err
 	}
-	scenarios := make([]apitest.Scenario, 0, len(ym.Tests.Scenarios))
-	for _, s := range ym.Tests.Scenarios {
+	_, err = yp.toMocks()
+	if err != nil {
+		return nil, err
+	}
+	scenarios := make([]apitest.Scenario, 0, len(yp.Tests.Scenarios))
+	for _, s := range yp.Tests.Scenarios {
 		scenario, err := toApitestScenario(s)
 		if err != nil {
 			return nil, err

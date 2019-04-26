@@ -4,12 +4,19 @@ Scenarios:
   - Scenario: Normal
     description: Normal
     Given:
-      host: http://server:8080
+      host: http://localhost:8080
     Tests:
       - When:
           method: GET
           path: /api
         Then:
+          - Mock: mock0
+            Given:
+              method: GET
+              path: /api
+            Then:
+              status: 200
+              format: empty
           status: 200
           format: "empty"
       - When:
@@ -17,6 +24,15 @@ Scenarios:
           method: POST
           body: '{"Token": "Foo", "Name": "Foo"}'
         Then:
+          - Mock: mock0
+            Given:
+              method: POST
+              path: /api/users/
+              body: '{"Token": "Foo", "Name": "Foo"}'
+            Then:
+              status: 200
+              format: application/json
+              body: '{"name": "Foo", "Info": "Bar"'
           status: 200
           format: application/json
           require:
@@ -26,8 +42,19 @@ Scenarios:
           method: POST
           body: '{"Token": "Foo"}'
         Then:
+          - Mock: mock0
+            Given:
+              method: POST
+              path: /api/users/
+              body: '{"Token": "Foo"}'
+            Then:
+              status: 200
+              format: application/json
+              body: '{"users": ["foo", "bar"]}'
           status: 200
           format: application/json
           require:
             - 'match {"users": "#Array"}'
-  
+Mocks:
+  - Name: mock0
+    port: 8080

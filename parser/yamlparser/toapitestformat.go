@@ -10,6 +10,7 @@ import (
 func toApitestScenario(in Scenario) (apitest.Scenario, error) {
 	out := apitest.Scenario{
 		Name: in.Name,
+		Who:  in.Who,
 		Given: apitest.Given{
 			WorkDir: in.Given.workdir,
 		},
