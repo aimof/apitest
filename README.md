@@ -6,6 +6,8 @@
 * Smallest docker image (It will be about 10MB)
 * JSON Format support.
 * Mock support(developping)
+* IT only supports single repo testing.
+* Other servers are all mocks.
 
 [![Build Status](https://travis-ci.org/aimof/apitest.svg?branch=master)](https://travis-ci.org/aimof/apitest)
 
@@ -31,7 +33,7 @@ __So I develop apitest, which is small, docker friendly and minimum.__
 
 ## Example of yaml file
 
-```
+```yaml
 Feature: Sample Yaml
 
 Scenarios:
@@ -86,7 +88,7 @@ go install
 
 ## Using in docker
 
-See dmd/apitest/README.md
+See cmd/apitest/README.md
 
 ## Usage
 
