@@ -24,7 +24,7 @@ func NewJSONComparer() *JSONComparer {
 // Match response and then section
 func (jc *JSONComparer) Match(resp *http.Response, then apitest.Then) (bool, error) {
 	if resp.StatusCode != then.Status {
-		return false, errors.New("jsoncomparer.Match: Statuscodes are not match")
+		return false, fmt.Errorf("jsoncomparer.Match: Statuscodes are not match. got: %d: want: %d", resp.StatusCode, then.Status)
 	}
 	if then.Format == "empty" {
 		return true, nil

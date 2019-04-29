@@ -27,6 +27,7 @@ func toApitestScenario(in Scenario) (apitest.Scenario, error) {
 				Header:  test.Then.Header,
 				Format:  test.Then.Format,
 				Require: test.Then.Require,
+				Retry:   test.Then.Retry,
 			},
 		})
 	}

@@ -9,6 +9,12 @@ Scenarios:
     Tests:
       - When:
           method: GET
+          path: /
+        Then:
+          status: 200
+          retry: true
+      - When:
+          method: GET
           path: /api
         Then:
           status: 200
