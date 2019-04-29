@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"time"
 
 	"github.com/aimof/apitest"
 	"github.com/aimof/apitest/comparer/jsoncomparer"
@@ -24,6 +25,10 @@ func main() {
 		os.Exit(1)
 	}
 
+	go func() {
+		time.Sleep(120 * time.Second)
+		os.Exit(8)
+	}()
 	match, err := do(scenarios)
 	if err != nil {
 		logger.Fatal(err.Error())

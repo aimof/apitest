@@ -19,6 +19,22 @@ func TestParse(t *testing.T) {
 					Test{
 						When: When{
 							Host:   "",
+							Path:   "/",
+							Method: "GET",
+							Header: nil,
+							Body:   "",
+						},
+						Then: Then{
+							Status:  200,
+							Header:  nil,
+							Format:  "",
+							Require: nil,
+							Retry:   true,
+						},
+					},
+					Test{
+						When: When{
+							Host:   "",
 							Path:   "/api",
 							Method: "GET",
 							Header: nil,

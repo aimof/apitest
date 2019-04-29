@@ -35,4 +35,5 @@ type Then struct {
 	Header  []string `yaml:"header"`
 	Format  string   `yaml:"format"`
 	Require []string `yaml:"require"`
+	Retry   bool     `yaml:"retry"`
 }
