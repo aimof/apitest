@@ -22,7 +22,7 @@ func NewJSONComparer() *JSONComparer {
 }
 
 // Match response and then section
-func (jc *JSONComparer) Match(resp *http.Response, then apitest.Then) (bool, error) {
+func (jc *JSONComparer) MatchResp(resp *http.Response, then apitest.Then) (bool, error) {
 	if resp.StatusCode != then.Status {
 		return false, fmt.Errorf("jsoncomparer.Match: Statuscodes are not match. got: %d: want: %d", resp.StatusCode, then.Status)
 	}
@@ -30,7 +30,7 @@ func (jc *JSONComparer) Match(resp *http.Response, then apitest.Then) (bool, err
 		return true, nil
 	}
 	for _, s := range then.Require {
-		if match, err := matchJSON(resp.Body, s); err != nil {
+		if match, err := MatchBody(resp.Body, s); err != nil {
 			return false, err
 		} else if !match {
 			logger.Info("Match: not match. require: " + s)
@@ -41,7 +41,7 @@ func (jc *JSONComparer) Match(resp *http.Response, then apitest.Then) (bool, err
 	return true, nil
 }
 
-func matchJSON(body io.Reader, require string) (bool, error) {
+func MatchBody(body io.Reader, require string) (bool, error) {
 	got, err := jason.NewValue(body)
 	if err != nil {
 		return false, errors.New("matchJson: body is illigal json format")

@@ -3,6 +3,7 @@ module github.com/aimof/apitest
 go 1.12
 
 require (
+	github.com/aimof/apitest/test/server v0.0.0-20190429054913-b4db39759a29 // indirect
 	github.com/aimof/jason v1.0.4
 	github.com/go-yaml/yaml v2.1.0+incompatible
 	github.com/google/pprof v0.0.0-20190309163659-77426154d546 // indirect

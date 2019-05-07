@@ -1,3 +1,5 @@
+github.com/aimof/apitest/test/server v0.0.0-20190429054913-b4db39759a29 h1:NvnMP5CyxC34SzB6RqnzrbRuC5mmuu1AuE0nIJJ+4VA=
+github.com/aimof/apitest/test/server v0.0.0-20190429054913-b4db39759a29/go.mod h1:h3pFDYsM4684P5/omTpq/fIBuBGSoYKM3qds8osXWNU=
 github.com/aimof/jason v1.0.0 h1:eP/q9cpShcs4oKvEDJT6iX9dbF1oc+A+8AtsaemkAZ8=
 github.com/aimof/jason v1.0.0/go.mod h1:fOJ4LM5NC4i/VS+n3HIw5LdQmI8ACHyw/iHPy2cd3x0=
 github.com/aimof/jason v1.0.1 h1:gUX8OI+oo4oy8bMgknQMBQp0OASWOVX4G9+515zDnD8=
@@ -29,6 +31,7 @@ golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5h
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/tools v0.0.0-20190330180304-aef51cc3777c h1:hbqcUGBwEHdDbhy8EluQIkbwTIbOvaYedVBif4f2mFQ=
 golang.org/x/tools v0.0.0-20190330180304-aef51cc3777c/go.mod h1:LCzVGOaR6xXOjkQ3onu1FJEFr0SW1gC7cKk1uF8kGRs=
+golang.org/x/tools v0.0.0-20190411180116-681f9ce8ac52 h1:9RlW/mHPSeoxtqVWkJ7ZugoTFX8WFZRzmCep/niCbtU=
 golang.org/x/tools v0.0.0-20190411180116-681f9ce8ac52/go.mod h1:LCzVGOaR6xXOjkQ3onu1FJEFr0SW1gC7cKk1uF8kGRs=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 h1:qIbj1fsPNlZgppZ+VLlY7N33q108Sa+fhmuc+sWQYwY=

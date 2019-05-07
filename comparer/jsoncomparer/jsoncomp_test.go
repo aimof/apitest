@@ -7,7 +7,7 @@ import (
 	"github.com/aimof/jason"
 )
 
-func TestMatchJson(t *testing.T) {
+func TestMatchBody(t *testing.T) {
 	testCases := []struct {
 		require string
 		body    string
@@ -31,7 +31,7 @@ func TestMatchJson(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		got, err := matchJSON(strings.NewReader(tc.body), tc.require)
+		got, err := MatchBody(strings.NewReader(tc.body), tc.require)
 		if err != nil {
 			t.Error(err)
 			continue

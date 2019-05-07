@@ -3,11 +3,10 @@ package apitest
 import "net/http"
 
 type Scenario struct {
-	Name   string
-	number int
-	Who    string
-	Given  Given
-	Tests  []Test
+	Name  string
+	Who   string
+	Given Given
+	Tests []Test
 }
 
 type Given struct {

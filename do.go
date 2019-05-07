@@ -1,5 +1,6 @@
 package apitest
 
+<<<<<<< HEAD
 import (
 	"time"
 
@@ -7,6 +8,10 @@ import (
 )
 
 func Do(s Scenario, kicker Kicker, comp Comparer) (bool, error) {
+=======
+// Do is usecase.
+func Do(s Scenario, kicker Kicker, comp ResponseComparer) (bool, error) {
+>>>>>>> WIP:
 	for _, test := range s.Tests {
 		resp, err := kicker.Kick(test.When)
 		if err != nil {
@@ -21,7 +26,7 @@ func Do(s Scenario, kicker Kicker, comp Comparer) (bool, error) {
 				}
 			}
 		}
-		match, err := comp.Match(resp, test.Then)
+		match, err := comp.MatchResponse(resp, test.Then)
 		resp.Body.Close()
 		if err != nil {
 			return false, err
