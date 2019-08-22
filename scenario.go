@@ -27,6 +27,7 @@ type Then struct {
 	Header  []string
 	Format  string
 	Require []string
+	Retry   bool
 }
 
 type Mock struct {

@@ -30,7 +30,7 @@ func (jc *JSONComparer) MatchResp(resp *http.Response, then apitest.Then) (bool,
 		return true, nil
 	}
 	for _, s := range then.Require {
-		if match, err := MatchBody(resp.Body, s); err != nil {
+		if match, err := jc.MatchBody(resp.Body, s); err != nil {
 			return false, err
 		} else if !match {
 			logger.Info("Match: not match. require: " + s)
@@ -41,7 +41,7 @@ func (jc *JSONComparer) MatchResp(resp *http.Response, then apitest.Then) (bool,
 	return true, nil
 }
 
-func MatchBody(body io.Reader, require string) (bool, error) {
+func (jc *JSONComparer) MatchBody(body io.Reader, require string) (bool, error) {
 	got, err := jason.NewValue(body)
 	if err != nil {
 		return false, errors.New("matchJson: body is illigal json format")

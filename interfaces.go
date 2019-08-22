@@ -14,6 +14,7 @@ type ResponseComparer interface {
 }
 
 type Comparer interface {
+	MatchResp(*http.Request, Then) (bool, error)
 	MatchBody(io.Reader, string) (bool, error)
 }
 

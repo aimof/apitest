@@ -34,12 +34,12 @@ type When struct {
 }
 
 type Then struct {
-Mocks   []MockBehavior `yaml:"Mocks"`
-	Status  int      `yaml:"status"`
-	Header  []string `yaml:"header"`
-	Format  string   `yaml:"format"`
-	Require []string `yaml:"require"`
-	Retry   bool     `yaml:"retry"`
+	Mocks   []MockBehavior `yaml:"Mocks"`
+	Status  int            `yaml:"status"`
+	Header  []string       `yaml:"header"`
+	Format  string         `yaml:"format"`
+	Require []string       `yaml:"require"`
+	Retry   bool           `yaml:"retry"`
 }
 
 type MockBehavior struct {
@@ -62,5 +62,4 @@ type MockThen struct {
 type Mock struct {
 	Name string `yaml:"Name"`
 	Port int    `yaml:"port"`
->>>>>>> WIP: Add mock. Yaml Parser
 }

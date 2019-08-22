@@ -1,5 +1,4 @@
-
-FROM golang:1.12.4-alpine
+FROM golang:1.12.9-alpine
 
 LABEL maintainer="aimof (aimof.aimof@gmail.com)"
 
